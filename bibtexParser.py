@@ -116,19 +116,22 @@ class bibtexParser:
         )
         return json.dumps(self.parsed_entries, indent=4)
 
-    # The method that does all the steps for you
-    def parse_bibtex(self):
+    def parse_bibtex(self, json=True):
         """
         Main entry point to parse the bibtex file. Read the bibtex string,
         chunk the bibtex string, parse the entries, add URLs from DOI, and
-        return the parsed entries.
+        return the parsed entries as a JSON or a list of dictionaries.
         """
         try:
             self.read_bibtex_file()
             self.extract_metadata()
             self.parse_metadata()
             self.add_urls_from_doi()
-            return self.extract_parsed_entries()
+
+            if json:
+                self.extract_parsed_entries()
+            else:
+                return self.parsed_entries
 
         except Exception as e:
             logging.error(f"An unexpected error occurred: {str(e)}")
