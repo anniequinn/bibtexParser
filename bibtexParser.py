@@ -116,7 +116,7 @@ class bibtexParser:
         )
         return json.dumps(self.parsed_entries, indent=4)
 
-    def parse_bibtex(self, json=True):
+    def parse_bibtex(self, json=False):
         """
         Main entry point to parse the bibtex file. Read the bibtex string,
         chunk the bibtex string, parse the entries, add URLs from DOI, and
@@ -248,7 +248,7 @@ def main():
     args = parser.parse_args()
 
     parser = bibtexParser(args.file_path)
-    parser.parse_bibtex()
+    parser.parse_bibtex(json=True)
 
     if args.save:
         file_directory = os.path.dirname(os.path.abspath(__file__))
