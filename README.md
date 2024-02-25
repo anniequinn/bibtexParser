@@ -15,6 +15,8 @@ python bibtex_parser.py /path/to/your/file.bib --save
 
 This will parse the specified `.bib` file and save the parsed entries as `parsed_bibtex.json` in the script's directory. If the `--save` flag is omitted, the output will be printed to the console.
 
+-----
+
 ### Import to script
 You can also import and use the `BibtexParser` class in your own Python scripts. First, ensure that the `bibtex_parser.py` file is accessible in your project's directory structure or Python path.
 
